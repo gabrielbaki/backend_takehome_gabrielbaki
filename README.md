@@ -57,16 +57,25 @@ Please provide the following in a GITHUB REPOSITORY.
 
 4. A brief README explaining how to build and run your application, and how to trigger the ETL process.
 
-    1. Build and run docker, start Flask server: docker-compose up --build
-    2. Trigger ETL from API endpoint GET http://127.0.0.1:5000/trigger_etl
+    1. Create .env file containing db credentials as contents in root like this:
+
+    DB_USER=postgres
+    DB_PASS=password
+    DB_NAME=postgres
+    DB_HOST=db
+    POSTGRES_PASSWORD=password
+
+    2. Build and run docker, start Flask server: docker-compose up --build
+    3. Trigger ETL from API endpoint GET http://127.0.0.1:5000/trigger_etl
         - access from browser http://127.0.0.1:5000/trigger_etl
         -   - docker exec -it <web_container_id> /bin/bash
             - curl http://127.0.0.1:5000/trigger_etl
-    3. Query db to check insert was succesfull
+    4. Query db to check insert was succesfull
         - docker exec -it <db_container_id> /bin/bash
         - psql -h localhost -U [username] -d [database]
         - SELECT * FROM features;
 
+        Successful output example:
          user_id | name  |       email       | signup_date | total_experim
 ents | avg_experiments |  experiments_pct   | most_common_compound
 _id | most_common_compound_name 
