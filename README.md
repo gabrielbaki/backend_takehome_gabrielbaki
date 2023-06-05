@@ -75,7 +75,8 @@ Please provide the following in a GITHUB REPOSITORY.
         - psql -h localhost -U [username] -d [database]
         - SELECT * FROM features;
 
-        Successful output example:  
+        Successful terminal output example:  
+        
         user_id | name  |       email       | signup_date | total_experim
 ents | avg_experiments |  experiments_pct   | most_common_compound
 _id | most_common_compound_name 
@@ -116,6 +117,8 @@ _id | most_common_compound_name
 Please also provide a script that builds, and runs the docker container. 
 You should also provide a script that scaffolds how a user can run the ETL process. This can be `curl` or something else.
 Finally, provide a script that queries the database and showcases that it has been populated with the desired features.
+
+note: all these points are adressed above as a response to deliverables
 
 
 ## Evaluation
