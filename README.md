@@ -59,10 +59,10 @@ Please provide the following in a GITHUB REPOSITORY.
 
     1. Create .env file containing db credentials as contents in root like this:
 
-    DB_USER=postgres
-    DB_PASS=password
-    DB_NAME=postgres
-    DB_HOST=db
+    DB_USER=postgres  
+    DB_PASS=password  
+    DB_NAME=postgres  
+    DB_HOST=db  
     POSTGRES_PASSWORD=password
 
     2. Build and run docker, start Flask server: docker-compose up --build
@@ -75,8 +75,8 @@ Please provide the following in a GITHUB REPOSITORY.
         - psql -h localhost -U [username] -d [database]
         - SELECT * FROM features;
 
-        Successful output example:
-         user_id | name  |       email       | signup_date | total_experim
+        Successful output example:  
+        user_id | name  |       email       | signup_date | total_experim
 ents | avg_experiments |  experiments_pct   | most_common_compound
 _id | most_common_compound_name 
 ---------+-------+-------------------+-------------+--------------
