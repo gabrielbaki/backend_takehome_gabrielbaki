@@ -59,8 +59,8 @@ app.py
 
     1. Build and run docker, start Flask server: docker-compose up --build
     2. Trigger ETL from API endpoint GET http://127.0.0.1:5000/trigger_etl
-        a. access from browser http://127.0.0.1:5000/trigger_etl
-        b.  - docker exec -it <web_container_id> /bin/bash
+        - access from browser http://127.0.0.1:5000/trigger_etl
+        -   - docker exec -it <web_container_id> /bin/bash
             - curl http://127.0.0.1:5000/trigger_etl
     3. Query db to check insert was succesfull
         - docker exec -it <db_container_id> /bin/bash
