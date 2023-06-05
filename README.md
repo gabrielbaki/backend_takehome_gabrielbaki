@@ -43,17 +43,17 @@ Please provide the following in a GITHUB REPOSITORY.
 
 1. A Dockerfile that sets up the environment for your application.
 
-docker-compose.yml
-Dockerfile
-Dockerfile-db
+- docker-compose.yml
+- Dockerfile
+- Dockerfile-db
 
 2. A requirements.txt file with all the Python dependencies.
 
-requirements.txt
+- requirements.txt
 
 3. A Python script that sets up the API and the ETL process.
 
-app.py
+- app.py
 
 4. A brief README explaining how to build and run your application, and how to trigger the ETL process.
 
