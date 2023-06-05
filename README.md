@@ -42,10 +42,67 @@ From the provided CSV files, derive the following features:
 Please provide the following in a GITHUB REPOSITORY.
 
 1. A Dockerfile that sets up the environment for your application.
+
+docker-compose.yml
+Dockerfile
+Dockerfile-db
+
 2. A requirements.txt file with all the Python dependencies.
+
+requirements.txt
+
 3. A Python script that sets up the API and the ETL process.
+
+app.py
+
 4. A brief README explaining how to build and run your application, and how to trigger the ETL process.
 
+    1. Build and run docker, start Flask server: docker-compose up --build
+    2. Trigger ETL from API endpoint GET http://127.0.0.1:5000/trigger_etl
+        a. access from browser http://127.0.0.1:5000/trigger_etl
+        b.  - docker exec -it <web_container_id> /bin/bash
+            - curl http://127.0.0.1:5000/trigger_etl
+    3. Query db to check insert was succesfull
+        - docker exec -it <db_container_id> /bin/bash
+        - psql -h localhost -U [username] -d [database]
+        - SELECT * FROM features;
+
+         user_id | name  |       email       | signup_date | total_experim
+ents | avg_experiments |  experiments_pct   | most_common_compound
+_id | most_common_compound_name 
+---------+-------+-------------------+-------------+--------------
+-----+-----------------+--------------------+---------------------
+----+---------------------------
+       1 | Alice | alice@example.com | 2023-01-01  |              
+   2 |             1.1 |  0.181818181818182 |                     
+  2 | Compound B
+       2 | Bob   | bob@example.com   | 2023-02-01  |              
+   1 |             1.1 | 0.0909090909090909 |                     
+  1 | Compound A
+       3 | Carol | carol@example.com | 2023-03-01  |              
+   1 |             1.1 | 0.0909090909090909 |                     
+  2 | Compound B
+       4 | Dave  | dave@example.com  | 2023-04-01  |              
+   1 |             1.1 | 0.0909090909090909 |                     
+  1 | Compound A
+       5 | Eve   | eve@example.com   | 2023-05-01  |              
+   1 |             1.1 | 0.0909090909090909 |                     
+  2 | Compound B
+       6 | Frank | frank@example.com | 2023-06-01  |              
+   1 |             1.1 | 0.0909090909090909 |                     
+  1 | Compound A
+       7 | Grace | grace@example.com | 2023-07-01  |              
+   1 |             1.1 | 0.0909090909090909 |                     
+  2 | Compound B
+       8 | Heidi | heidi@example.com | 2023-08-01  |              
+   1 |             1.1 | 0.0909090909090909 |                     
+  1 | Compound A
+       9 | Ivan  | ivan@example.com  | 2023-09-01  |              
+   1 |             1.1 | 0.0909090909090909 |                     
+  2 | Compound B
+      10 | Judy  | judy@example.com  | 2023-10-01  |              
+   1 |             1.1 | 0.0909090909090909 |                     
+  1 | Compound A
 
 Please also provide a script that builds, and runs the docker container. 
 You should also provide a script that scaffolds how a user can run the ETL process. This can be `curl` or something else.
