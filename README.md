@@ -23,7 +23,6 @@
         - SELECT * FROM features;
 
         Successful terminal output example:  
-        
         user_id | name  |       email       | signup_date | total_experim
 ents | avg_experiments |  experiments_pct   | most_common_compound
 _id | most_common_compound_name 
@@ -114,6 +113,7 @@ Please provide the following in a GITHUB REPOSITORY.
 3. A Python script that sets up the API and the ETL process.
 
 - app.py
+- etl_processor.py
 
 4. A brief README explaining how to build and run your application, and how to trigger the ETL process.
 
