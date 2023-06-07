@@ -1,6 +1,6 @@
 # Backend Engineering Take-Home Challenge
 
-### How to run the code
+## How to run the code
 1. Create .env file in root containing db credentials as contents in root like this (add it to .gitignore for security):
 
     DB_USER=postgres  
@@ -34,19 +34,17 @@
  7 | Grace | grace@example.com | 2023-07-01 | 1 | 1.1 | 0.0909090909090909 | 2 | Compound B
  8 | Heidi | heidi@example.com
 
-### ETL API Documentation
+## ETL API Documentation
 The ETL API has been designed to execute an Extract-Transform-Load (ETL) process, reading data from CSV files, deriving and processing data, and then loading the data into a PostgreSQL database. The ETL process is triggered via a HTTP GET request. This documentation provides an overview of the available endpoints and the functionality of the ETL processor.
 
-## API Endpoint  
+### API Endpoint  
 Endpoint: /trigger_etl  
 Method: GET  
 This endpoint runs from `app.py` triggers the ETL process. It does not require any parameters or body content.  
 
-# Request  
-No parameters or body content are required.  
+- Request:  No parameters or body content are required.  
 
-# Response  
-The response to this GET request will be a JSON object containing a status message and the result of the ETL process.
+- Response:  The response to this GET request will be a JSON object containing a status message and the result of the ETL process.
 
 Example:
 {
@@ -54,21 +52,16 @@ Example:
   "result": "successfully inserted into database"
 }
 
-## ETLProcessor Class  
+### ETLProcessor Class  
 The ETLProcessor class in `etl_processor.py` is responsible for the main functionality of the ETL process. The class contains methods for cleaning the data (clean_df), deriving new features (derive_features), and executing the overall ETL process (etl).
 
-# clean_df(df, remove)  
-This method takes in a dataframe and a string to be removed from all column names and cell values, and returns the cleaned dataframe.
+- clean_df(df, remove):  This method takes in a dataframe and a string to be removed from all column names and cell values, and returns the cleaned dataframe.
 
-# derive_features()  
-This method reads data from three CSV files ('users.csv', 'user_experiments.csv', 'compounds.csv'), derives new features, and returns a dataframe with the derived features for each user which includes columns from user csv, total experiments a user ran, experiment percentage for that user compared to total, average experiments amount per user, user's most commonly experimented compound id, and it's name.
+- derive_features():  This method reads data from three CSV files ('users.csv', 'user_experiments.csv', 'compounds.csv'), derives new features, and returns a dataframe with the derived features for each user which includes columns from user csv, total experiments a user ran, experiment percentage for that user compared to total, average experiments amount per user, user's most commonly experimented compound id, and it's name.
 
-# etl()  
-This is an asynchronous method that conducts the ETL process. It calls derive_features to get the data and then inserts the data into a PostgreSQL database. The connection details for the database are fetched from environment variables. If the connection is successful, a table named 'features' is created if it does not already exist, and the data is inserted into the table. If there is any error during the process, the error message is returned. After the process completes, the connection to the database is closed.
+- etl():  This is an asynchronous method that conducts the ETL process. It calls derive_features to get the data and then inserts the data into a PostgreSQL database. The connection details for the database are fetched from environment variables. If the connection is successful, a table named 'features' is created if it does not already exist, and the data is inserted into the table. If there is any error during the process, the error message is returned. After the process completes, the connection to the database is closed. This method returns a message indicating whether the data was successfully inserted into the database or if an error occurred.
 
-This method returns a message indicating whether the data was successfully inserted into the database or if an error occurred.
-
-## Docker Environment
+### Docker Environment
 
 - `Dockerfile`: The Dockerfile for the Python application. It begins with a Python 3.7 base image. It sets the working directory to /app. The requirements.txt file is copied into the Docker image and pip install is run to install these dependencies. Then all the files from the current directory are copied into the Docker image. Finally, CMD sets the default command to run when a container is run from this image, which in this case is python app.py.
 
